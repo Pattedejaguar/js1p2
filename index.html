@@ -8,7 +8,39 @@
   <body>
     <!-- onmouseover change la source de l'image vu quand la souris passe dessus -->
     <!-- onmouseout change la source de l'image quand la souris ne touche plus l'image -->
-      <img src="images/image1.jpg" onmouseover="this.src='images/image1_2.jpg'"
-      onmouseout="this.src='images/image1.jpg'" />
-    </body>
+      <img src="images/image1.jpg">
+
+<script type="text/javascript">
+
+document.addEventListener('mousemove',function()
+{
+  // prendre la source à partir du target
+  var changeimg = event.target.src;
+// si la source de l'image est différent de l'alt
+  if (changeimg.slice(-6) != "_2.jpg")
+  {
+    // alors l'image sera remplacé par l'alt
+    event.target.src = changeimg.replace(/.jpg/g, "_2.jpg");
+  }
+});
+
+document.addEventListener('mouseout', function()
+   {
+     // srcCible prends le src de la cible
+     var srcCible = event.target.src;
+     // S'il s'agit de l'image alternatif
+     if (srcCible.slice(-6) == "_2.jpg")
+     {
+       // On modifie la src pour faire apparaitre l'image d'origine
+      event.target.src =  srcCible.replace(/_2.jpg/g, ".jpg");
+     }
+   });
+</script>
+
+
+
+
+
+
+      </body>
 </html>
